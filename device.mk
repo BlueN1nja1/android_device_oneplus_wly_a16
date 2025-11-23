@@ -13,6 +13,10 @@ PRODUCT_PACKAGES += \
     KeyHandler \
     tri-state-key-calibrate
 
+# AudioFX
+PRODUCT_PACKAGES += \
+    AudioFX
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/backend_conf.xml:$(TARGET_COPY_OUT_ODM)/etc/backend_conf.xml \
@@ -47,6 +51,10 @@ PRODUCT_COPY_FILES += \
 
 $(call soong_config_set,surfaceflinger,udfps_lib,//hardware/oplus:libudfps_extension.oplus)
 
+# Jelly
+PRODUCT_PACKAGES += \
+  Jelly
+
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc-service.nxp \
@@ -65,7 +73,7 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-infinity
 
 PRODUCT_PACKAGES += \
     OPlusFrameworksResTarget \
@@ -80,6 +88,10 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+# Twelve
+PRODUCT_PACKAGES += \
+  Twelve
 
 # Inherit from the common OEM chipset makefile.
 $(call inherit-product, device/oneplus/sm8450-common/common.mk)

@@ -5,4 +5,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/custom_wly.mk
+    $(LOCAL_DIR)/infinity_wly.mk
