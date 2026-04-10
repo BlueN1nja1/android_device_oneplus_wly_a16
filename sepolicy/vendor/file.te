@@ -1,0 +1,8 @@
+# Thermal
+type sys_thermal_wifi_limit, fs_type, sysfs_type;
+type sys_thermal_flash_state, fs_type, sysfs_type;
+type thermal_data_file, data_file_type, file_type;
+
+# Data files under /data
+type vendor_fingerprint_data_file, data_file_type, file_type;
+type vendor_fingerprint_data_file_fpdump, data_file_type, file_type;

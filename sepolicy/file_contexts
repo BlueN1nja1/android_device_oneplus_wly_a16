@@ -1,0 +1,36 @@
+############################################
+# OPLUS / REALME CHARGING SYSFS
+############################################
+
+/sys/class/oplus_chg(/.*)?                   u:object_r:vendor_oplus_chg:s0
+/sys/class/qcom-battery(/.*)?                u:object_r:vendor_oplus_chg:s0
+/sys/class/realme_chg(/.*)?                  u:object_r:vendor_oplus_chg:s0
+/sys/class/power_supply/battery/fast_charge  u:object_r:vendor_oplus_chg:s0
+/sys/class/power_supply/battery/vooc         u:object_r:vendor_oplus_chg:s0
+/sys/class/power_supply/battery/quick_charge u:object_r:vendor_oplus_chg:s0
+/sys/class/power_supply/battery/oplus_chg.*  u:object_r:vendor_oplus_chg:s0
+
+############################################
+# GPU
+############################################
+
+/sys/class/kgsl/kgsl-3d0(/.*)?               u:object_r:sysfs_gpu:s0
+
+############################################
+# Fingerprint
+############################################
+
+/data/vendor/goodix(/.*)?                    u:object_r:vendor_fingerprint_data_file:s0
+/mnt/vendor/persist/goodix(/.*)?             u:object_r:vendor_fingerprint_data_file:s0
+
+############################################
+# Init
+############################################
+
+/(vendor|system/vendor)/bin/init\.oplus_sm8450\.sh u:object_r:vendor_qti_init_shell_exec:s0
+
+############################################
+# Thermal
+############################################
+
+/data/vendor/thermal(/.*)?                   u:object_r:thermal_data_file:s0

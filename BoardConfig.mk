@@ -13,8 +13,12 @@ DEVICE_PATH := device/oneplus/wly
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+
+TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
+
+# Bootctrl
+PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/bootctrl
 
 # Recovery
 TARGET_RECOVERY_DENSITY := xxhdpi
@@ -22,3 +26,10 @@ TARGET_RECOVERY_UI_MARGIN_HEIGHT := 126
 
 # Include the proprietary files BoardConfig.
 include vendor/oneplus/wly/BoardConfigVendor.mk
+
+# Rom Vsync
+TARGET_USES_HWC2 := true
+TARGET_USES_GRALLOC4 := true
+VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
+SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
+PRESENT_TIME_OFFSET_FROM_VSYNC_NS := 0

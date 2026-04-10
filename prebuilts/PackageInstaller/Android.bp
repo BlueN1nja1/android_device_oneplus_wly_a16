@@ -1,0 +1,16 @@
+// ================================
+// PackageInstaller (priv-app)
+// ================================
+android_app_import {
+    name: "PackageInstaller",
+
+    apk: "PackageInstaller.apk",   // relative to this Android.bp
+
+    certificate: "platform",       // auto-sign
+    privileged: true,              // /system/priv-app/
+
+    dex_preopt: {
+        enabled: false,
+    },
+
+}

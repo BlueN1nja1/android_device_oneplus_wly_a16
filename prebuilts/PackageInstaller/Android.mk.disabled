@@ -1,0 +1,28 @@
+LOCAL_PATH := $(call my-dir)
+################################
+# PackageInstaller (priv-app)
+################################
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := PackageInstaller
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := APPS
+LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
+
+LOCAL_SRC_FILES := PackageInstaller.apk
+
+# Install location
+LOCAL_PRODUCT_MODULE := true
+LOCAL_PRIVILEGED_MODULE := true   # installs under /system/priv-app
+
+# Let Make sign it automatically with platform key
+LOCAL_CERTIFICATE := platform
+LOCAL_DEX_PREOPT := false
+
+# Override source-built PackageInstaller modules
+LOCAL_OVERRIDES_PACKAGES := \
+    PackageInstaller \
+    PackageInstaller_tablet \
+    PackageInstaller_tv
+
+include $(BUILD_PREBUILT)

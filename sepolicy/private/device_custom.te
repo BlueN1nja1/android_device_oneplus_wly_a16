@@ -1,0 +1,37 @@
+###############################################
+# INIT – VM / PROC TUNING ACCESS
+###############################################
+
+typeattribute proc_dirty proc_type;
+typeattribute proc_drop_caches proc_type;
+typeattribute proc_sched proc_type;
+
+allow init proc_dirty:file rw_file_perms;
+allow init proc_drop_caches:file rw_file_perms;
+allow init proc_sched:file rw_file_perms;
+
+
+###############################################
+# OPLUS / REALME CHARGING SYSFS
+###############################################
+
+type vendor_oplus_chg, fs_type, sysfs_type;
+
+# Framework (BatteryService runs in system_server)
+allow system_server vendor_oplus_chg:dir search;
+allow system_server vendor_oplus_chg:file { open read getattr };
+
+# Health HAL
+allow hal_health_default vendor_oplus_chg:dir search;
+allow hal_health_default vendor_oplus_chg:file { open read getattr };
+
+# Charger (charger mode)
+allow charger vendor_oplus_chg:dir search;
+allow charger vendor_oplus_chg:file { open read getattr };
+
+# Power HAL
+allow hal_power_default vendor_oplus_chg:dir search;
+allow hal_power_default vendor_oplus_chg:file { open read write getattr };
+
+# Thermal HAL (read-only monitoring)
+allow hal_thermal_default vendor_oplus_chg:file { open read getattr };

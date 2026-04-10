@@ -15,9 +15,11 @@ $(call inherit-product, device/oneplus/wly/device.mk)
 $(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 
 # Infinity-X Specific Flags
+TARGET_DISABLE_EPPE := true
 INFINITY_MAINTAINER := "BlueN1nja1"
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_SUPPORTS_BLUR := true
+TARGET_TOUCH_BOOST_SUPPORTED := true
 TARGET_HAS_UDFPS := true
 WITH_GAPPS := true
 PRODUCT_NO_CAMERA := false
@@ -38,9 +40,10 @@ PRODUCT_SYSTEM_DEVICE := OP516FL1
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="NE2215-user 14 UKQ1.230924.001 S.19ed398-1-530c2 release-keys" \
-    BuildFingerprint=OnePlus/NE2215/OP516FL1:14/UKQ1.230924.001/S.19ed398-1-530c2:user/release-keys \
+    BuildDesc="NE2211-user 16 BP2A.250605.015 S.18e769a_6693c8d6_9ae934 release-keys" \
+    BuildFingerprint=OnePlus/NE2211/OP516FL1:16/BP2A.250605.015/S.18e769a_6693c8d6_9ae934:user/release-keys \
     DeviceName=OP516FL1 \
-    DeviceProduct=NE2215 \
+    DeviceProduct=NE2211 \
     SystemDevice=OP516FL1 \
-    SystemName=NE2215
+    SystemName=NE2211
+
