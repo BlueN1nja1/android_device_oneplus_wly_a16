@@ -53,7 +53,7 @@ android_app_import {
 
     presigned: true,
     dex_preopt: {
-        enabled: true,
+        enabled: false,
     },
 
     product_specific: true,
