@@ -59,6 +59,10 @@ PRODUCT_COPY_FILES += \
 
 $(call soong_config_set,surfaceflinger,udfps_lib,//hardware/oplus:libudfps_extension.oplus)
 
+# Force proprietary display HAL stack over open-source CAF
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.display.composer-service
+
 # Jelly
 PRODUCT_PACKAGES += \
   Jelly

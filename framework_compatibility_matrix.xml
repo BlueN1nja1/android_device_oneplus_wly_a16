@@ -1,0 +1,18 @@
+<compatibility-matrix version="1.0" type="framework">
+    <hal format="hidl" optional="true">
+        <name>vendor.oplus.hardware.displaypanelfeature</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDisplayPanelFeature</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.display.allocator</name>
+        <version>1</version>
+        <interface>
+            <name>IQtiAllocator</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</compatibility-matrix>

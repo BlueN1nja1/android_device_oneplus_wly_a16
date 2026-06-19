@@ -9,7 +9,12 @@ include device/oneplus/sm8450-common/BoardConfigCommon.mk
 
 DEVICE_PATH := device/oneplus/wly
 
+# Disable excess rubbish
+#TARGET_FORCE_PREBUILT_DISPLAY_HAL := true
+#TARGET_EXCLUDES_LIVEDISPLAY_SDM := true
+
 # HIDL
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/framework_compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Properties

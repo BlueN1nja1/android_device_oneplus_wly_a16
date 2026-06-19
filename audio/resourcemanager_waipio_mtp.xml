@@ -27,6 +27,10 @@
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                             -->
 <resource_manager_info>
     <config_params>
+        <!-- Hardcode acdb paths -->
+        <param key="acdb_cal_file" value="/odm/etc/acdbdata/acdb_cal.acdb" />
+        <param key="workspace_file" value="/odm/etc/acdbdata/workspaceFileXml.qwsp" />
+
         <param key="native_audio_mode" value="false"/>
         <!-- Uncomment HIFI Filter Headphones related sections when set this
              hifi_filter key to true -->

@@ -1,0 +1,18 @@
+diff --git a/sdm/libs/core/comp_manager.cpp b/sdm/libs/core/comp_manager.cpp
+index 1234567..89abcdef 100644
+--- a/sdm/libs/core/comp_manager.cpp
++++ b/sdm/libs/core/comp_manager.cpp
+@@ -750,9 +750,7 @@ bool CompManager::IsRotatorSupportedFormat(LayerBufferFormat format) {
+ bool CompManager::IsDisplayHWAvailable() {
+   std::lock_guard<std::recursive_mutex> obj(comp_mgr_mutex_);
+-  if (resource_intf_) {
+-    return resource_intf_->IsDisplayHWAvailable();
+-  }
+-
+-  return false;
++  // Safeguard against malformed Pixelworks extension wrapper function tables
++  // Return true if the interface is allocated, avoiding the null function call
++  return (resource_intf_ != nullptr);
+ }
+ 
+ DisplayError CompManager::FreeDemuraFetchResources(const uint32_t &display_id) {

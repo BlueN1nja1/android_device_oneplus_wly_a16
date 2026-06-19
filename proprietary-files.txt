@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from OnePlus 10 Pro 5G (NE2213_15.0.0.901(EX01)).
+## are from OnePlus 10 Pro 5G (NE2213_16.0.3.520(EX01)).
 
 # ACDB
 odm/etc/acdbdata/FTM/acdb_cal.acdb
@@ -21,7 +21,6 @@ odm/lib/rfsa/adsp/libarc_htp_driver_skel.so
 odm/lib/rfsa/adsp/libarcsoft_dualcam_refocus_skel.so
 odm/lib/rfsa/adsp/libarcsoft_hdrplus_hvx_skel.so
 odm/lib/rfsa/adsp/libarcsoft_portraitSN_hvx_skel.so
-odm/lib/rfsa/adsp/libarcsoft_portraitsn_hvx_skel.so
 odm/lib/rfsa/adsp/libc++.so.1
 odm/lib/rfsa/adsp/libc++abi.so.1
 odm/lib/rfsa/adsp/libcalculator_skel.so
@@ -1337,6 +1336,17 @@ vendor/firmware/CAMERA_ICP.mdt
 vendor/firmware/CAMERA_ICP_170.elf
 vendor/firmware/CAMERA_ICP_480.elf
 
+# Display Specific Binaries
+odm/bin/hw/vendor.oplus.hardware.displaypanelfeature@1.0-service
+odm/etc/init/vendor.oplus.hardware.displaypanelfeature@1.0-service.rc
+odm/etc/vintf/manifest/manifest_oplus_displaypanelfeature.xml
+odm/bin/hw/vendor.oplus.hardware.mmdisplayfeature@1.0-service
+odm/etc/init/vendor.oplus.hardware.mmdisplayfeature@1.0-service.rc
+odm/lib/vendor.oplus.hardware.mmdisplayfeature@1.0.so
+odm/lib64/vendor.oplus.hardware.mmdisplayfeature@1.0.so
+odm/lib64/libdpservice.so
+odm/lib/libdpservice.so
+
 # ESE
 odm/bin/hw/vendor.qti.esepowermanager@1.1-service
 odm/etc/init/vendor.qti.esepowermanager@1.1-service.rc
@@ -1544,7 +1554,6 @@ odm/etc/inparm/irissoft/mcfCheck.txt
 odm/etc/inparm/irissoft/mcfCheck_low.txt
 odm/etc/irissoft.fw
 odm/etc/irissoft_oplus.xml
-odm/etc/irissoft_samsung_S6E3HC3_dsc_cmd_mode_panel_21631.fw
 odm/etc/irissoft_samsung_S6E3HC3_dsc_cmd_mode_panel.xml
 
 # NFC

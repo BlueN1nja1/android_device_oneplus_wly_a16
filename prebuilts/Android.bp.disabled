@@ -1,49 +1,4 @@
 // ================================
-// SimpleGallery (priv-app)
-// ================================
-android_app_import {
-    name: "XZGallery",
-
-    apk: "XZGallery.apk",
-
-    // Required for product/app with external APK
-    presigned: true,
-
-    dex_preopt: {
-        enabled: false,
-    },
-
-    product_specific: true,
-    privileged: false,
-
-    overrides: [
-        "Gallery",
-        "Gallery3D",
-        "GalleryNew3D",
-        "Gallery2",
-        "Glimpse",
-        "Glimpse_prebuilt",
-    ],
-}
-
-
-// ================================
-// PixelDocumentsUIGoogleOverlay
-// ================================
-android_app_import {
-    name: "PixelDocumentsUIGoogleOverlay",
-
-    apk: "PixelDocumentsUIGoogleOverlay/PixelDocumentsUIGoogleOverlay.apk",
-
-    presigned: true,
-    dex_preopt: {
-        enabled: false,
-    },
-
-    product_specific: true,
-}
-
-// ================================
 // UserLockscreenOverlay
 // ================================
 android_app_import {

@@ -32,7 +32,7 @@ PRODUCT_NAME := infinity_wly
 PRODUCT_DEVICE := wly
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_BRAND := OnePlus
-PRODUCT_MODEL := NE2215
+PRODUCT_MODEL := NE2211
 
 PRODUCT_SYSTEM_NAME := OP516FL1
 PRODUCT_SYSTEM_DEVICE := OP516FL1
@@ -40,10 +40,10 @@ PRODUCT_SYSTEM_DEVICE := OP516FL1
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="NE2211-user 16 BP2A.250605.015 S.18e769a_6693c8d6_9ae934 release-keys" \
-    BuildFingerprint=OnePlus/NE2211/OP516FL1:16/BP2A.250605.015/S.18e769a_6693c8d6_9ae934:user/release-keys \
+    BuildDesc="NE2213-user 16 BP2A.250605.015 S.26fc334-45cb8b-42d8f3 release-keys" \
+    BuildFingerprint=OnePlus/NE2213/OP516FL1:16/BP2A.250605.015/S.26fc334-45cb8b-42d8f3:user/release-keys \
     DeviceName=OP516FL1 \
-    DeviceProduct=NE2211 \
+    DeviceProduct=NE2213 \
     SystemDevice=OP516FL1 \
-    SystemName=NE2211
+    SystemName=NE2213
 

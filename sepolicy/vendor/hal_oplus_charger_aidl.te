@@ -1,0 +1,2 @@
+allow hal_oplus_charger_aidl vendor_oplus_chg:dir search;
+allow hal_oplus_charger_aidl vendor_oplus_chg:lnk_file read;
