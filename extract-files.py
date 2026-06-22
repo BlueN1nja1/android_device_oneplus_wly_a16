@@ -30,6 +30,7 @@ namespace_imports = [
     'hardware/qcom-caf/sm8450',
     'vendor/qcom/opensource/commonsys-intf/display',
     'vendor/qcom/opensource/commonsys/display',
+    'device/oneplus/wly',
 ]
 
 
@@ -81,6 +82,8 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('SystemCamera =  0;  0;  1;  1;  1', 'SystemCamera =  0;  0;  0;  0;  1'),
     ('odm/lib64/libPerfectColor.so', 'odm/lib64/libCOppLceTonemapAPI.so', 'odm/lib64/libSuperRaw.so', 'odm/lib64/libYTCommon.so', 'odm/lib64/libaps_frame_registration.so', 'odm/lib64/libyuv2.so'): blob_fixup()
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
+    ('odm/lib64/nfc_nci.nqx.default.hw.so', 'odm/lib/nfc_nci.nqx.default.hw.so'): blob_fixup()
+        .add_needed('libbase_shim_nfc.so'),
     ('odm/lib64/libAlgoProcess.so', 'vendor/lib64/libcamximageformatutils.so'): blob_fixup()
         .replace_needed('android.hardware.graphics.common-V2-ndk_platform.so', 'android.hardware.graphics.common-V7-ndk.so')
         .replace_needed('vendor.qti.hardware.display.config-V2-ndk_platform.so', 'vendor.qti.hardware.display.config-V5-ndk.so')
@@ -199,3 +202,21 @@ if __name__ == '__main__':
         module, 'sm8450-common', module.vendor
     )
     utils.run()
+
+    # --- AUTOMATED BLUEPRINT PATCH ---
+    # Injects the shim at the root of the module so both 32-bit and 64-bit targets inherit it perfectly.
+    import os
+    bp_file = '../../../vendor/oneplus/wly/Android.bp'
+
+    if os.path.isfile(bp_file):
+        print(f"Injecting shim into root dependencies of {bp_file}...")
+        with open(bp_file, 'r') as f:
+            bp_content = f.read()
+
+        if '"libbase_shim_nfc"' not in bp_content:
+            bp_content = bp_content.replace(
+                'name: "nfc_nci.nqx.default.hw",',
+                'name: "nfc_nci.nqx.default.hw",\n\tshared_libs: ["libbase_shim_nfc"],'
+            )
+            with open(bp_file, 'w') as f:
+                f.write(bp_content)

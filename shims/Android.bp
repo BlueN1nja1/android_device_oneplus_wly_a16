@@ -1,0 +1,8 @@
+cc_library_shared {
+    name: "libbase_shim_nfc",
+    srcs: ["libbase_shim_nfc.cpp"],
+    shared_libs: [
+        "libbase",
+    ],
+    vendor: true,
+}

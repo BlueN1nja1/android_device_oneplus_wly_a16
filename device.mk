@@ -43,6 +43,8 @@ BOARD_SEPOLICY_DIRS += \
     device/oneplus/wly/sepolicy/private \
     device/oneplus/wly/sepolicy/vendor
 
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/oneplus/wly/sepolicy/system_ext/private
+
 # Display
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/display_id_4630946358012694401.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630946358012694401.xml
@@ -69,9 +71,23 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc-service.nxp \
+    android.hardware.nfc@1.2-service.nxp \
     com.android.nfc_extras \
+    NfcNci \
+    SecureElement \
+    libbase_shim_nfc\
     Tag
+
+# NFC Init Script
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/vendor.nxp.hardware.nfc@1.2-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.nxp.hardware.nfc@1.2-service.rc
+
+# NXP NFC specific packages
+PRODUCT_PACKAGES += \
+    nfc_nci.nxp.default \
+    libnfc-nci \
+    libnfc_nci_jni \
+    libnfc_nxp_ext_lib
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
@@ -100,6 +116,10 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+# Torch
+PRODUCT_COPY_FILES += \
+    device/oneplus/wly/init/init.wly.torch.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.wly.torch.rc
 
 # Twelve
 PRODUCT_PACKAGES += \

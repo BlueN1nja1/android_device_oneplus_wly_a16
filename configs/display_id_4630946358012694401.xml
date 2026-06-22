@@ -12,6 +12,13 @@
             <density>600</density>
         </density>
     </densityMapping>
+
+    <refreshRateRange>
+        <minimum>10</minimum>
+        <maximum>120</maximum>
+    </refreshRateRange>
+    <defaultPeakRefreshRate>120</defaultPeakRefreshRate>
+
     <screenBrightnessMap interpolation="linear">
         <point>
             <value>0.00097680097</value>

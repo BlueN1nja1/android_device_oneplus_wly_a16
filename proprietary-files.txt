@@ -1302,7 +1302,6 @@ vendor/lib64/libsynx.so
 vendor/lib64/libtfestriping.so
 vendor/lib64/libthreadutils.so
 vendor/lib64/libubifocus.so
-vendor/lib64/vendor.oplus.hardware.cameraextension-V1-ndk_platform.so
 vendor/lib64/vendor.oplus.hardware.cammidasservice@1.0.so
 vendor/lib64/vendor.oplus.hardware.sendextcamcmd-V2-ndk_platform.so
 vendor/lib64/vendor.qti.hardware.camera.aon@1.0-service-impl.so
@@ -1506,8 +1505,6 @@ vendor/etc/permissions/qti_fingerprint_interface.xml
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib64/libqfp-service.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
-vendor/lib64/vendor.oplus.hardware.osense.client-V1-ndk_platform.so
-vendor/lib/vendor.oplus.hardware.osense.client-V1-ndk_platform.so
 vendor/lib64/android.hardware.biometrics.fingerprint-V1-ndk_platform.so
 
 # Keymaster Interfaces
@@ -1560,6 +1557,21 @@ odm/etc/irissoft_samsung_S6E3HC3_dsc_cmd_mode_panel.xml
 odm/etc/nfc/libnfc-mtp-SN100.conf_20847:vendor/etc/libnfc-nxp.conf
 odm/etc/nfc/libnfc-nci.conf_20847:vendor/etc/libnfc-nci.conf
 odm/etc/nfc/sn100u.bin_sn100t_fw_01_10_68:vendor/firmware/sn100u.bin
+odm/bin/hw/vendor.nxp.hardware.nfc@1.2-service:vendor/bin/hw/vendor.nxp.hardware.nfc@1.2-service
+odm/lib/libsn100u_fw.so:vendor/lib/libsn100u_fw.so
+odm/bin/nqnfcinfo:vendor/bin/nqnfcinfo
+odm/lib/nfc_nci.nqx.default.hw.so:vendor/lib/nfc_nci.nqx.default.hw.so|libbase_shim_nfc
+odm/lib64/nfc_nci.nqx.default.hw.so:vendor/lib64/nfc_nci.nqx.default.hw.so|libbase_shim_nfc
+odm/lib/vendor.nxp.hardware.nfc@1.0.so:vendor/lib/vendor.nxp.hardware.nfc@1.0.so
+odm/lib/vendor.nxp.hardware.nfc@1.1.so:vendor/lib/vendor.nxp.hardware.nfc@1.1.so
+odm/lib/vendor.nxp.hardware.nfc@2.0.so:vendor/lib/vendor.nxp.hardware.nfc@2.0.so
+odm/lib64/vendor.nxp.hardware.nfc@1.0.so:vendor/lib64/vendor.nxp.hardware.nfc@1.0.so
+odm/lib64/vendor.nxp.hardware.nfc@1.1.so:vendor/lib64/vendor.nxp.hardware.nfc@1.1.so
+odm/lib64/vendor.nxp.hardware.nfc@2.0.so:vendor/lib64/vendor.nxp.hardware.nfc@2.0.so
+odm/lib/vendor.oplus.hardware.nfc_aidl-V2-ndk_platform.so:vendor/lib/vendor.oplus.hardware.nfc_aidl-V2-ndk_platform.so
+odm/lib/vendor.oplus.hardware.nfcExtns-V1-ndk_platform.so:vendor/lib/vendor.oplus.hardware.nfcExtns-V1-ndk_platform.so
+odm/lib64/vendor.oplus.hardware.nfc_aidl-V2-ndk_platform.so:vendor/lib64/vendor.oplus.hardware.nfc_aidl-V2-ndk_platform.so
+odm/lib64/vendor.oplus.hardware.nfcExtns-V1-ndk_platform.so:vendor/lib64/vendor.oplus.hardware.nfcExtns-V1-ndk_platform.so
 
 # Secure element
 odm/bin/hw/vendor.qti.secure_element@1.2-service

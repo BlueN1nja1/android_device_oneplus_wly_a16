@@ -1,0 +1,7 @@
+# 1. Label the directories as basic 'sysfs' so cameraserver is legally allowed to search through them
+/sys/devices/platform/soc/c42d000\.qcom,spmi/spmi-0/0-02/c42d000\.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00(/.*)? u:object_r:sysfs:s0
+
+# 2. Label ONLY the brightness files as wake_locks so cameraserver can write the slider values
+/sys/devices/platform/soc/c42d000\.qcom,spmi/spmi-0/0-02/c42d000\.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:switch_1/brightness u:object_r:sysfs_wake_lock:s0
+/sys/devices/platform/soc/c42d000\.qcom,spmi/spmi-0/0-02/c42d000\.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:torch_0/brightness u:object_r:sysfs_wake_lock:s0
+/sys/devices/platform/soc/c42d000\.qcom,spmi/spmi-0/0-02/c42d000\.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:torch_1/brightness u:object_r:sysfs_wake_lock:s0
