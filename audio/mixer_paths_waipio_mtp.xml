@@ -90,6 +90,10 @@
     <ctl name="SpkrRight VISENSE Switch" value="0" />
     <ctl name="SpkrLeft SWR DAC_Port Switch" value="0" />
     <ctl name="SpkrRight SWR DAC_Port Switch" value="0" />
+    <ctl name="SpkrLeft Speaker_Mute_Switch" value="1" />
+    <ctl name="SpkrRight Speaker_Mute_Switch" value="1" />
+    <ctl name="SpkrLeft TFA98XX Volume" value="84" />
+    <ctl name="SpkrRight TFA98XX Volume" value="84" />
 
     <!-- RX Controls -->
     <ctl name="RX_MACRO RX0 MUX" value="ZERO" />

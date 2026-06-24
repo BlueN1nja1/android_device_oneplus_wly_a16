@@ -71,16 +71,12 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.2-service.nxp \
+    com.android.nfcservices \
+    android.hardware.nfc-service.nxp \
     com.android.nfc_extras \
-    NfcNci \
     SecureElement \
-    libbase_shim_nfc\
+    libbase_shim_nfc \
     Tag
-
-# NFC Init Script
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/vendor.nxp.hardware.nfc@1.2-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/vendor.nxp.hardware.nfc@1.2-service.rc
 
 # NXP NFC specific packages
 PRODUCT_PACKAGES += \
@@ -108,6 +104,10 @@ PRODUCT_PACKAGES += \
     OPlusSettingsProviderResTarget \
     OPlusSettingsResTarget \
     OPlusSystemUIResTarget
+
+# Performance Tweaks
+PRODUCT_COPY_FILES += \
+    device/oneplus/wly/init/init.wly.power.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.wly.power.rc
 
 # PowerShare
 PRODUCT_PACKAGES += \

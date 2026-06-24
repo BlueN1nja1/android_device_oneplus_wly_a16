@@ -1,0 +1,9 @@
+type keyhandler, domain, coredomain;
+app_domain(keyhandler)
+
+# Define the missing sysfs type so the compiler recognizes it
+type sysfs_tri_state, sysfs_type, fs_type;
+
+# Allow the app to find and read the tri-state sysfs nodes
+allow keyhandler sysfs_tri_state:file r_file_perms;
+allow keyhandler sysfs_tri_state:dir search;

@@ -33,6 +33,11 @@
         <transitionPoint>0.50036665851</transitionPoint>
         <minimumHdrPercentOfScreen>0.1</minimumHdrPercentOfScreen>
         <minimumLux>8700</minimumLux>
+        <allowminimallux>true</allowminimallux>
+        <hbmWindowConfiguration>
+            <width>200</width>
+            <height>200</height>
+        </hbmWindowConfiguration>
         <timing>
             <timeWindowSecs>1800</timeWindowSecs>
             <timeMaxSecs>300</timeMaxSecs>

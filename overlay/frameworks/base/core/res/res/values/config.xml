@@ -1,5 +1,31 @@
 <resources>
-    <integer name="config_defaultRefreshRate">120</integer>
+    <bool name="config_haptic_feedback_enabled">true</bool>
+    <bool name="config_supportedHapticPrimitives">true</bool>
+
+    <integer name="config_defaultRefreshRate">60</integer>
     <integer name="config_defaultPeakRefreshRate">120</integer>
     <integer name="config_defaultRefreshRateInHbmHdr">120</integer>
+
+    <!-- Tells the framework that the display hardware handles its own dimming/backlight adjustments for UDFPS -->
+    <bool name="config_profile_udfps_native_backlight">true</bool>
+
+    <!-- Prevents the framework from drawing a software dimming layer over the window -->
+    <bool name="config_udfps_client_backlight_control">false</bool>
+
+    <bool name="config_supportsUdfps">true</bool>
+
+    <string-array name="config_udfps_sensor_props" translatable="false">
+        <item>720</item>
+        <item>2450</item>
+        <item>90</item>
+    </string-array>
+
+    <bool name="config_profile_udfps_native_backlight">true</bool>
+    <bool name="config_udfps_client_backlight_control">false</bool>
+
+    <!-- Explicitly allow NFC interaction while the device is locked (Mimicking Pixel Behavior)-->
+    <bool name="config_nfc_on_lockscreen_allowed">true</bool>
+
+    <!-- Force the system to display the 'Require Device Unlock' setting -->
+    <bool name="config_nfc_uicc_transaction_enabled">true</bool>
 </resources>

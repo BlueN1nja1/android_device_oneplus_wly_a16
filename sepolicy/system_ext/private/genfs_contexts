@@ -1,0 +1,1 @@
+genfscon sysfs /devices/platform/soc/soc:tri_state_key u:object_r:sysfs_tri_state:s0

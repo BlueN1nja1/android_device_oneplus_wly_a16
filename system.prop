@@ -1,5 +1,16 @@
+# Infinity X Props
 ro.product.marketname=Oneplus 10 Pro 5G
 ro.infinity.battery=5000 mAh
 ro.infinity.soc=Snapdragon® 8 Gen 1
 ro.infinity.display=3216x1440, 120 Hz
 ro.infinity.camera=48MP + 50MP + 8MP + 32MP
+
+# Force the modem into low-power states immediately after data transmission
+persist.env.fastdorm.enabled=true
+persist.fd.sc.starts.btime=250
+persist.radio.add_power_save=1
+persist.radio.data_ltd_sys_ind=1
+
+# Vibrator
+ro.vibrator.hal.supported_primitives=true
+ro.sys.haptics.animator.enabled=true

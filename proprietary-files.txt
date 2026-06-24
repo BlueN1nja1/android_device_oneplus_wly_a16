@@ -1593,6 +1593,12 @@ odm/etc/sensor/config/waipio_qrd_sx933x_0.json
 odm/etc/sensor/config/waipio_qrd_sx933x_down_0.json
 odm/etc/sensor/sensor_config.json
 
+# Vibrator
+odm/etc/aac_richtap.config
+odm/lib64/libaacvibrator.so:vendor/lib64/libaacvibrator.so
+odm/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk_platform.so:vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk_platform.so
+odm/lib64/vendor.oplus.hardware.lmvibrator@1.0.so:vendor/lib64/vendor.oplus.hardware.lmvibrator@1.0.so
+
 # WiFi
 odm/etc/wifi/bdwlan.b0a
 odm/etc/wifi/bdwlan.b0c

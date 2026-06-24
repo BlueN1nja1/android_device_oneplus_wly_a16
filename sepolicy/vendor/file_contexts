@@ -5,3 +5,6 @@
 /sys/devices/platform/soc/c42d000\.qcom,spmi/spmi-0/0-02/c42d000\.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:switch_1/brightness u:object_r:sysfs_wake_lock:s0
 /sys/devices/platform/soc/c42d000\.qcom,spmi/spmi-0/0-02/c42d000\.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:torch_0/brightness u:object_r:sysfs_wake_lock:s0
 /sys/devices/platform/soc/c42d000\.qcom,spmi/spmi-0/0-02/c42d000\.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:torch_1/brightness u:object_r:sysfs_wake_lock:s0
+
+/dev/aac_richtap_dev    u:object_r:aac_richtap_dev_device:s0
+/odm/etc/aac_richtap\.config    u:object_r:vendor_configs_file:s0

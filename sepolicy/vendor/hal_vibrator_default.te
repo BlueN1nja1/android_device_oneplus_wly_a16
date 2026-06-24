@@ -1,0 +1,9 @@
+# Allow HAL to read the RichTap config
+allow hal_vibrator_default vendor_configs_file:file { read open getattr };
+
+# Allow HAL to talk to the AAC motor node
+allow hal_vibrator_default aac_richtap_dev_device:chr_file rw_file_perms;
+
+# Allow HAL to interact with Oplus haptic sysfs nodes
+allow hal_vibrator_default sysfs_leds_oplus_haptic:dir search;
+allow hal_vibrator_default sysfs_leds_oplus_haptic:file rw_file_perms;
