@@ -6,3 +6,23 @@ cc_library_shared {
     ],
     vendor: true,
 }
+cc_library_shared {
+    name: "libaac_shim",
+    vendor: true,
+    srcs: ["libaac_shim.cpp"],
+    shared_libs: [
+        "liblog",
+        "libdl",
+    ],
+    compile_multilib: "64",
+}
+cc_library_shared {
+    name: "libsdm_shim",
+    vendor: true,
+    srcs: ["libsdm_shim.cpp"],
+    shared_libs: [
+        "liblog",
+        "libdl",
+    ],
+    compile_multilib: "64",
+}

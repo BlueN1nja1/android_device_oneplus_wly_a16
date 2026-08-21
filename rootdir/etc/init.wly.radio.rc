@@ -1,0 +1,36 @@
+# Allow the ril services to start on boot and disengage any disabled statuses via Ril Jumpstarter Protocol
+
+service vendor.qcrild /vendor/bin/hw/qcrilNrd
+    class main
+    user radio
+    group radio cache inet misc audio log readproc wakelock oem_2901
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+    # android.hardware.radio@1.5 full inheritance chain
+    interface android.hardware.radio@1.0::IRadio slot1
+    interface android.hardware.radio@1.1::IRadio slot1
+    interface android.hardware.radio@1.2::IRadio slot1
+    interface android.hardware.radio@1.3::IRadio slot1
+    interface android.hardware.radio@1.4::IRadio slot1
+    interface android.hardware.radio@1.5::IRadio slot1
+    # android.hardware.radio.config@1.1 full inheritance chain
+    interface android.hardware.radio.config@1.0::IRadioConfig default
+    interface android.hardware.radio.config@1.1::IRadioConfig default
+
+service vendor.qcrild2 /vendor/bin/hw/qcrilNrd -c 2
+    class main
+    user radio
+    group radio cache inet misc audio log readproc wakelock oem_2901
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+    # android.hardware.radio@1.5 full inheritance chain for slot2
+    interface android.hardware.radio@1.0::IRadio slot2
+    interface android.hardware.radio@1.1::IRadio slot2
+    interface android.hardware.radio@1.2::IRadio slot2
+    interface android.hardware.radio@1.3::IRadio slot2
+    interface android.hardware.radio@1.4::IRadio slot2
+    interface android.hardware.radio@1.5::IRadio slot2
+
+# Jumpstart Mobile Data
+service dpmQmiMgr /vendor/bin/dpmQmiMgr
+    class main
+    user system
+    group system

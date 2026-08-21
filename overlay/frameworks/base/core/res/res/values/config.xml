@@ -2,10 +2,6 @@
     <bool name="config_haptic_feedback_enabled">true</bool>
     <bool name="config_supportedHapticPrimitives">true</bool>
 
-    <integer name="config_defaultRefreshRate">60</integer>
-    <integer name="config_defaultPeakRefreshRate">120</integer>
-    <integer name="config_defaultRefreshRateInHbmHdr">120</integer>
-
     <!-- Tells the framework that the display hardware handles its own dimming/backlight adjustments for UDFPS -->
     <bool name="config_profile_udfps_native_backlight">true</bool>
 

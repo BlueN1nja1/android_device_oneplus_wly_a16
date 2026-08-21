@@ -12,5 +12,5 @@ persist.radio.add_power_save=1
 persist.radio.data_ltd_sys_ind=1
 
 # Vibrator
-ro.vibrator.hal.supported_primitives=true
+ro.vibrator.supported_primitives=true
 ro.sys.haptics.animator.enabled=true

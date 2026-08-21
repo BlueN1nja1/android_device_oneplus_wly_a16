@@ -1,67 +1,61 @@
 # ==============================================================================
-# wly Dynamic Thermal & Performance Profiles
+# wly Thermal & Performance Profiles
 # ==============================================================================
 
 on boot
-    # 1. Kill Qualcomm's aggressive Core Control (stops voltage spikes)
-    write /sys/devices/system/cpu/cpu4/core_ctl/enable 0
-    write /sys/devices/system/cpu/cpu7/core_ctl/enable 0
+    # We MUST let the X2 and Mid cores completely power off to save voltage
+    write /sys/devices/system/cpu/cpu4/core_ctl/enable 1
+    write /sys/devices/system/cpu/cpu7/core_ctl/enable 1
 
-    # 2. Force Mid and Prime Cores online
-    write /sys/devices/system/cpu/cpu4/online 1
-    write /sys/devices/system/cpu/cpu5/online 1
-    write /sys/devices/system/cpu/cpu6/online 1
-    write /sys/devices/system/cpu/cpu7/online 1
+    # Delay the ramp-up (up_rate_limit) so background tasks don't cause heat spikes.
+    # Increase the down-ramp (down_rate_limit) so UI feels smooth once it's fast.
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/up_rate_limit_us 1000
+    write /sys/devices/system/cpu/cpufreq/policy7/schedutil/up_rate_limit_us 2000
 
-    # 3. Lock the floor to 300MHz so they idle cold instead of turning off
-    write /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq 300000
-
-    # 4. Tame the GPU and Memory Bus overhead
-    write /sys/class/kgsl/kgsl-3d0/idle_timer 64
+    # Drop idle timer from 64ms to 50ms. GPU will sleep faster after a frame is drawn.
+    write /sys/class/kgsl/kgsl-3d0/idle_timer 50
     write /sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/governor "bw_hwmon"
     write /sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/governor "bw_hwmon"
 
-    # 5. Optimize ZRAM overhead
     write /sys/block/zram0/comp_algorithm lz4
     write /proc/sys/vm/swappiness 60
 
-    # Stop aggressive vendor logging daemons
+    # Disable verbose kernel logging to reduce I/O heat
     stop oplus_log
     stop log_main
     stop log_system
-
-    # Disable kernel verbose logging to the console to save I/O
     write /proc/sys/kernel/printk "3 4 1 3"
 
 
 # ------------------------------------------------------------------------------
-# PROFILE 1: DEVELOPMENT / ADB TETHERED (Maximum Thermal Protection)
+# PROFILE 1: DEVELOPMENT / ADB TETHERED (Max Thermal Protection)
 # ------------------------------------------------------------------------------
 on property:sys.usb.state=*adb*
-    # Cap SurfaceFlinger to 60Hz to save display ribbon cable heat
-    setprop debug.sf.frame_rate_multiple 60
-    # Cap Cortex-X2 Prime Core heavily
-    write /sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq 2000000
-    # Restrict GPU
+    # Park the X2 completely. You don't need the Prime core for compiling/testing via adb.
+    write /sys/devices/system/cpu/cpu7/online 0
+
+    # Cap Mid cores to an efficient 2.0GHz
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq 2000000
+
     write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 3
-    # Clamp background usage
-    write /dev/cpuctl/background/cpu.uclamp.max 20
+    write /dev/cpuctl/background/cpu.uclamp.max 10
 
 
 # ------------------------------------------------------------------------------
 # PROFILE 2: DAILY DRIVING (Cool & Efficient 120Hz)
 # ------------------------------------------------------------------------------
-# Triggers when not tethered to ADB and not gaming
 on property:sys.usb.state=mtp && property:sys.performance.profile=0
-    # Restore 120Hz
-    setprop debug.sf.frame_rate_multiple 120
-    # Cap Cortex-X2 to an efficient 2.4GHz
+
+    # Allow X2 to wake up, but cap it at the efficiency cliff (2.4GHz)
+    write /sys/devices/system/cpu/cpu7/online 1
     write /sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq 2496000
-    # Restrict GPU power level slightly
+
+    # Unlock Mid cores
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq 2496000
+
     write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 2
-    # Clamp background usage
     write /dev/cpuctl/background/cpu.uclamp.max 20
 
 
@@ -69,11 +63,11 @@ on property:sys.usb.state=mtp && property:sys.performance.profile=0
 # PROFILE 3: GAMING (Unleashed Performance)
 # ------------------------------------------------------------------------------
 on property:sys.performance.profile=1
-    # Ensure 120Hz is active
-    setprop debug.sf.frame_rate_multiple 120
-    # Unlock Cortex-X2 to maximum boost
+
+    # Unlock everything
+    write /sys/devices/system/cpu/cpu7/online 1
     write /sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq 2995200
-    # Unlock GPU to Max Frequency
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq 2496000
+
     write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 0
-    # Give background tasks slightly more breathing room
     write /dev/cpuctl/background/cpu.uclamp.max 30

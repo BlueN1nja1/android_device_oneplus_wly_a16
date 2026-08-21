@@ -89,6 +89,11 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('vendor.qti.hardware.display.config-V2-ndk_platform.so', 'vendor.qti.hardware.display.config-V5-ndk.so')
         .replace_needed('vendor.oplus.hardware.osense.client-V1-ndk_platform.so', 'vendor.oplus.hardware.osense.client-V1-ndk.so')
         .replace_needed('vendor.oplus.hardware.performance-V1-ndk_platform.so', 'vendor.oplus.hardware.performance-V1-ndk.so'),
+(
+        'odm/lib/libgf_hal_G7.so',
+        'odm/lib64/libgf_hal_G7.so',
+    ): blob_fixup()
+        .binary_regex_replace(b'/odm/vendor/vendor/firmware', b'/odm/firmware\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
     ('odm/lib64/libHIS.so', 'odm/lib64/libOGLManager.so'): blob_fixup()
         .clear_symbol_version('AHardwareBuffer_allocate')
         .clear_symbol_version('AHardwareBuffer_describe')
@@ -208,6 +213,8 @@ if __name__ == '__main__':
     import os
     bp_file = '../../../vendor/oneplus/wly/Android.bp'
 
+    modified = False
+
     if os.path.isfile(bp_file):
         print(f"Injecting shim into root dependencies of {bp_file}...")
         with open(bp_file, 'r') as f:
@@ -218,5 +225,11 @@ if __name__ == '__main__':
                 'name: "nfc_nci.nqx.default.hw",',
                 'name: "nfc_nci.nqx.default.hw",\n\tshared_libs: ["libbase_shim_nfc"],'
             )
+            modified = True
+
+        if modified:
             with open(bp_file, 'w') as f:
                 f.write(bp_content)
+                print("Modification Complete... vendor/oneplus/wly successfully modified...")
+
+

@@ -40,8 +40,8 @@ PRODUCT_SYSTEM_DEVICE := OP516FL1
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="NE2213-user 16 BP2A.250605.015 S.26fc334-45cb8b-42d8f3 release-keys" \
-    BuildFingerprint=OnePlus/NE2213/OP516FL1:16/BP2A.250605.015/S.26fc334-45cb8b-42d8f3:user/release-keys \
+    BuildDesc="NE2213-user 16 BP2A.250605.015 S.3c11fd8-181a3a9-17c6449 release-keys" \
+    BuildFingerprint=OnePlus/NE2213/OP516FL1:16/BP2A.250605.015/S.3c11fd8-181a3a9-17c6449:user/release-keys \
     DeviceName=OP516FL1 \
     DeviceProduct=NE2213 \
     SystemDevice=OP516FL1 \

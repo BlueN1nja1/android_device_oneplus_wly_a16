@@ -1,4 +1,22 @@
 <compatibility-matrix version="1.0" type="framework">
+    <hal format="aidl" optional="true">
+        <name>android.hardware.telephony.data</name>
+        <version>3</version>
+        <interface>
+            <name>IRadioData</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>android.hardware.telephony.messaging</name>
+        <version>3</version>
+        <interface>
+            <name>IRadioMessaging</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.oplus.hardware.displaypanelfeature</name>
         <version>1.0</version>
@@ -20,6 +38,39 @@
         <version>2.0</version>
         <interface>
             <name>INxpNfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.oplus.hardware.radio</name>
+        <version>2</version>
+        <interface>
+            <name>IRadio</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.data.connection</name>
+        <version>1</version>
+        <interface>
+            <name>IDataConnection</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.oplus.hardware.communicationcenter</name>
+        <version>2</version>
+        <interface>
+            <name>ICommunicationCenter</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.oplus.hardware.mmdisplayfeature</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IMMDisplayFeature</name>
             <instance>default</instance>
         </interface>
     </hal>

@@ -31,35 +31,27 @@ PRODUCT_COPY_FILES += \
 TARGET_SCREEN_HEIGHT := 3216
 TARGET_SCREEN_WIDTH := 1440
 
+# Display
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/display/displayconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630946358012694402.xml
+
+$(call soong_config_set_bool,qtidisplay,oplus_udfps,true)
+$(call soong_config_set,qtidisplay,pxlw_vendor_namespace,vendor/oneplus/sm8450-common)
+
 $(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_AF,true)
 $(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_AB,false)
-$(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_DM,true)
+$(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_DM,false)
 $(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_PA,true)
 $(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_SE,true)
 $(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_HTPR,true)
 
+# Sepolicy
 BOARD_SEPOLICY_DIRS += \
     device/oneplus/wly/sepolicy \
-    device/oneplus/wly/sepolicy/private \
     device/oneplus/wly/sepolicy/vendor
 
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/oneplus/wly/sepolicy/system_ext/private
-
-# Display
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/display_id_4630946358012694401.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630946358012694401.xml
-
-$(call soong_config_set,qtidisplay,oplus_udfps,true)
-$(call soong_config_set,qtidisplay,pxlw_vendor_namespace,vendor/oneplus/sm8450-common)
-
-# Fingerprint
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service.oplus
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
-
-$(call soong_config_set,surfaceflinger,udfps_lib,//hardware/oplus:libudfps_extension.oplus)
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
+    device/oneplus/wly/sepolicy/system_ext/private
 
 # Force proprietary display HAL stack over open-source CAF
 PRODUCT_PACKAGES += \
@@ -113,25 +105,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.powershare-service.oplus
 
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
-
-# Torch
+# Ril Jumpstarter protocol
 PRODUCT_COPY_FILES += \
-    device/oneplus/wly/init/init.wly.torch.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.wly.torch.rc
-
-# Twelve
-PRODUCT_PACKAGES += \
-  Twelve
+    device/oneplus/wly/rootdir/etc/init.wly.radio.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.wly.radio.rc
 
 # Inherit from the common OEM chipset makefile.
 $(call inherit-product, device/oneplus/sm8450-common/common.mk)
 
 # Display defaults
-# Allow LTPO-style fallback to 60 Hz when the workload does not need 120 Hz.
+# Allow LTPO-style fallback to 24 Hz when the workload does not need 120 Hz.
 $(call soong_config_set,surfaceflinger,frame_rate_category_high,120)
-$(call soong_config_set,surfaceflinger,frame_rate_category_min,60)
+$(call soong_config_set,surfaceflinger,frame_rate_category_min,24)
 
 # Inherit from the proprietary files makefile.
 $(call inherit-product, vendor/oneplus/wly/wly-vendor.mk)

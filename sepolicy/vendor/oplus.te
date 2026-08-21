@@ -17,10 +17,6 @@ allow init proc_sched:file rw_file_perms;
 
 type vendor_oplus_chg, fs_type, sysfs_type;
 
-# Framework (BatteryService runs in system_server)
-allow system_server vendor_oplus_chg:dir search;
-allow system_server vendor_oplus_chg:file { open read getattr };
-
 # Health HAL
 allow hal_health_default vendor_oplus_chg:dir search;
 allow hal_health_default vendor_oplus_chg:file { open read getattr };
